@@ -113,7 +113,7 @@ class _CompassScreenState extends State<CompassScreen> {
               onTap: (){
                 // Use the custom page transition animation when navigating
                 Navigator.of(context).pushReplacement(
-                  CustomPageRouteBottomToTop(
+                  CustomPageRouteRightToLeft(
                     builder: (context) => const MenuScreen(),
                   ),
                 );

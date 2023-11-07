@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'Screens/demo.dart';
 import 'Screens/home_screen.dart';
 import 'Screens/splash_screen.dart';
 
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
           home: child,
         );
       },
-      child: const SplashScreen(),
+      child: QiblahCompass(),
     );
   }
 }
