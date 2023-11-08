@@ -74,7 +74,7 @@ class _MenuScreenState extends State<MenuScreen> {
                 style: GoogleFonts.sourceCodePro(
                   color: AppColors.colorWhiteHighEmp,
                   textStyle: Theme.of(context).textTheme.displayLarge,
-                  fontSize: 22.sp,
+                  fontSize: 20.sp,
                   //fontWeight: FontWeight.w700,
                 ),
               ),
@@ -108,7 +108,7 @@ class _MenuScreenState extends State<MenuScreen> {
                   style: GoogleFonts.sourceCodePro(
                     color: AppColors.colorWhiteHighEmp,
                     textStyle: Theme.of(context).textTheme.displayLarge,
-                    fontSize: 22.sp,
+                    fontSize: 20.sp,
                     //fontWeight: FontWeight.w700,
                   ),
                 ),
@@ -143,7 +143,7 @@ class _MenuScreenState extends State<MenuScreen> {
                   style: GoogleFonts.sourceCodePro(
                     color: AppColors.colorWhiteHighEmp,
                     textStyle: Theme.of(context).textTheme.displayLarge,
-                    fontSize: 22.sp,
+                    fontSize: 20.sp,
                     //fontWeight: FontWeight.w700,
                   ),
                 ),
@@ -178,7 +178,7 @@ class _MenuScreenState extends State<MenuScreen> {
                   style: GoogleFonts.sourceCodePro(
                     color: AppColors.colorWhiteHighEmp,
                     textStyle: Theme.of(context).textTheme.displayLarge,
-                    fontSize: 22.sp,
+                    fontSize: 20.sp,
                     //fontWeight: FontWeight.w700,
                   ),
                 ),
@@ -213,7 +213,7 @@ class _MenuScreenState extends State<MenuScreen> {
                   style: GoogleFonts.sourceCodePro(
                     color: AppColors.colorWhiteHighEmp,
                     textStyle: Theme.of(context).textTheme.displayLarge,
-                    fontSize: 22.sp,
+                    fontSize: 20.sp,
                     //fontWeight: FontWeight.w700,
                   ),
                 ),

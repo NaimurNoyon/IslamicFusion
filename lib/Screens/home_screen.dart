@@ -3,16 +3,22 @@ import 'package:flutter_analog_clock/flutter_analog_clock.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:islamic_fusion/Constants/app_colors.dart';
 import 'package:islamic_fusion/Screens/compass_screen.dart';
 import '../Constants/custom_page_route.dart';
 import 'Menu/menu_screen.dart';
+import 'package:adhan/adhan.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final myCoordinates = Coordinates(23.9088, 89.1220); // Replace with your own location lat, lng.
+    final params = CalculationMethod.karachi.getParameters();
+    params.madhab = Madhab.hanafi;
+    final prayerTimes = PrayerTimes.today(myCoordinates, params);
     return Scaffold(
       backgroundColor: AppColors.colorPrimaryLighter,
       appBar: AppBar(
@@ -45,19 +51,6 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            /*StreamBuilder(
-              stream: Stream.periodic(const Duration(seconds: 1)),
-              builder: (context, snapshot) {
-                return Text(
-                    DateFormat('hh:mm:ss').format(DateTime.now()),
-                  style: GoogleFonts.orbitron(
-                    textStyle: Theme.of(context).textTheme.displayLarge,
-                    fontSize: 50,
-                    fontWeight: FontWeight.w700,
-                  ),
-                );
-              },
-            ),*/
             /*AnalogClock(
 
               //secondHandColor: Colors.transparent,
@@ -69,9 +62,8 @@ class HomeScreen extends StatelessWidget {
                 child: Text('GMT-8'),
               ),
             ),*/
-
             Container(
-              margin: EdgeInsets.only(top: 30.h, bottom: 20.h),
+              margin: EdgeInsets.only(top: 10.h, bottom: 10.h),
               width: 200.w,
               height: 200.w,
               child: AnalogClock(
@@ -100,7 +92,19 @@ class HomeScreen extends StatelessWidget {
                 centerPointWidthFactor: 1.5,
               ),
             ),
-
+            StreamBuilder(
+              stream: Stream.periodic(const Duration(seconds: 1)),
+              builder: (context, snapshot) {
+                return Text(
+                  DateFormat('hh : mm : ss').format(DateTime.now()),
+                  style: GoogleFonts.orbitron(
+                    textStyle: Theme.of(context).textTheme.displayLarge,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w700,
+                  ),
+                );
+              },
+            ),
             Column(
               children: [
                 Text(
@@ -113,7 +117,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "1st January 2023",
+                  DateFormat('d MMMM y').format(DateTime.now()),
                   style: GoogleFonts.sourceCodePro(
                     color: AppColors.colorSecondary,
                     textStyle: Theme.of(context).textTheme.displayLarge,
@@ -145,7 +149,7 @@ class HomeScreen extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(1.0),
                         child: AnalogClock(
-                          dateTime: DateTime.now(),
+                          dateTime: prayerTimes.fajr,
                           isKeepTime: false,
                           dialColor: Colors.white,
                           dialBorderColor: Colors.white,
@@ -181,7 +185,7 @@ class HomeScreen extends StatelessWidget {
                             end: Alignment.bottomRight,
                           ),
                         ),
-                        child: Center(child: Text("03:30 PM",style: TextStyle(color: AppColors.colorSecondary, fontWeight: FontWeight.bold)))
+                        child: Center(child: Text(DateFormat.jm().format(prayerTimes.fajr),style: TextStyle(color: AppColors.colorSecondary, fontWeight: FontWeight.bold)))
                     )
                   ],
                 ),
@@ -202,7 +206,7 @@ class HomeScreen extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(1.0),
                         child: AnalogClock(
-                          dateTime: DateTime.now(),
+                          dateTime: prayerTimes.dhuhr,
                           isKeepTime: false,
                           dialColor: Colors.white,
                           dialBorderColor: Colors.white,
@@ -238,7 +242,7 @@ class HomeScreen extends StatelessWidget {
                             end: Alignment.bottomRight,
                           ),
                         ),
-                        child: Center(child: Text("03:30 PM",style: TextStyle(color: AppColors.colorSecondary, fontWeight: FontWeight.bold)))
+                        child: Center(child: Text(DateFormat.jm().format(prayerTimes.dhuhr),style: const TextStyle(color: AppColors.colorSecondary, fontWeight: FontWeight.bold)))
                     )
                   ],
                 ),
@@ -266,7 +270,7 @@ class HomeScreen extends StatelessWidget {
                         child: Padding(
                           padding: const EdgeInsets.all(1.0),
                           child: AnalogClock(
-                            dateTime: DateTime.now(),
+                            dateTime: prayerTimes.asr,
                             isKeepTime: false,
                             dialColor: Colors.white,
                             dialBorderColor: Colors.white,
@@ -302,7 +306,7 @@ class HomeScreen extends StatelessWidget {
                               end: Alignment.bottomRight,
                             ),
                           ),
-                          child: Center(child: Text("03:30 PM",style: TextStyle(color: AppColors.colorSecondary, fontWeight: FontWeight.bold)))
+                          child: Center(child: Text(DateFormat.jm().format(prayerTimes.asr),style: TextStyle(color: AppColors.colorSecondary, fontWeight: FontWeight.bold)))
                       )
                     ],
                   ),
@@ -323,7 +327,7 @@ class HomeScreen extends StatelessWidget {
                         child: Padding(
                           padding: const EdgeInsets.all(1.0),
                           child: AnalogClock(
-                            dateTime: DateTime.now(),
+                            dateTime: prayerTimes.maghrib,
                             isKeepTime: false,
                             dialColor: Colors.white,
                             dialBorderColor: Colors.white,
@@ -359,7 +363,7 @@ class HomeScreen extends StatelessWidget {
                               end: Alignment.bottomRight,
                             ),
                           ),
-                          child: Center(child: Text("03:30 PM",style: TextStyle(color: AppColors.colorSecondary, fontWeight: FontWeight.bold)))
+                          child: Center(child: Text(DateFormat.jm().format(prayerTimes.maghrib),style: TextStyle(color: AppColors.colorSecondary, fontWeight: FontWeight.bold)))
                       )
                     ],
                   ),
@@ -388,7 +392,7 @@ class HomeScreen extends StatelessWidget {
                         child: Padding(
                           padding: const EdgeInsets.all(1.0),
                           child: AnalogClock(
-                            dateTime: DateTime.now(),
+                            dateTime: prayerTimes.isha,
                             isKeepTime: false,
                             dialColor: Colors.white,
                             dialBorderColor: Colors.white,
@@ -424,7 +428,7 @@ class HomeScreen extends StatelessWidget {
                               end: Alignment.bottomRight,
                             ),
                           ),
-                          child: Center(child: Text("03:30 PM",style: TextStyle(color: AppColors.colorSecondary, fontWeight: FontWeight.bold)))
+                          child: Center(child: Text(DateFormat.jm().format(prayerTimes.isha),style: TextStyle(color: AppColors.colorSecondary, fontWeight: FontWeight.bold)))
                       )
                     ],
                   ),

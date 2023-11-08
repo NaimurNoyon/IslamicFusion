@@ -44,8 +44,9 @@ dependencies:
   page_transition:
   flutter_svg:
   flutter_swiper_view:
-  flutter_qiblah:
-  geolocator: 
+  flutter_qiblah: ^2.2.0
+  geolocator:
+  adhan:
 
 
 flutter_native_splash:

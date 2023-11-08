@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:geolocator/geolocator.dart';
 import '../Constants/custom_page_route.dart';
 import 'home_screen.dart';
 
@@ -11,6 +12,10 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+
+  double? latitude;
+  double? longitude;
+
   @override
   void initState() {
     super.initState();
@@ -23,6 +28,20 @@ class _SplashScreenState extends State<SplashScreen> {
         ),
       );
     });
+  }
+
+  Future<void> getLocation() async {
+    try {
+      Position position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.best,
+      );
+      setState(() {
+        latitude = position.latitude;
+        longitude = position.longitude;
+      });
+    } catch (e) {
+      print("Error getting location: $e");
+    }
   }
 
   @override
