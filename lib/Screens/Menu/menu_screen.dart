@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:islamic_fusion/Constants/app_colors.dart';
+import 'package:islamic_fusion/Screens/Menu/Al%20Quran/surah_list_screen.dart';
 import 'package:islamic_fusion/Screens/Menu/dua_screen.dart';
 import 'package:islamic_fusion/Screens/Menu/hadith_screen.dart';
 import 'package:islamic_fusion/Screens/Menu/privacy_screen.dart';
@@ -55,27 +56,37 @@ class _MenuScreenState extends State<MenuScreen> {
       ),
       body: Column(
         children: [
-          Container(
-            height: 65.h,
-            width: double.infinity,
-            //margin: EdgeInsets.symmetric(vertical: 8.w),
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                colors: [AppColors.colorText, AppColors.colorRed],
-                // Replace with your desired colors
-                begin: Alignment.topLeft,
-                // Adjust the alignment as needed
-                end: Alignment.bottomRight,
+          InkWell(
+            onTap: () {
+              // Use the custom page transition animation when navigating
+              Navigator.of(context).push(
+                CustomPageRouteBottomToTop(
+                  builder: (context) => const SurahListScreen(),
+                ),
+              );
+            },
+            child: Container(
+              height: 65.h,
+              width: double.infinity,
+              //margin: EdgeInsets.symmetric(vertical: 8.w),
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [AppColors.colorText, AppColors.colorRed],
+                  // Replace with your desired colors
+                  begin: Alignment.topLeft,
+                  // Adjust the alignment as needed
+                  end: Alignment.bottomRight,
+                ),
               ),
-            ),
-            child: Center(
-              child: Text(
-                'Al Quran',
-                style: GoogleFonts.sourceCodePro(
-                  color: AppColors.colorWhiteHighEmp,
-                  textStyle: Theme.of(context).textTheme.displayLarge,
-                  fontSize: 20.sp,
-                  //fontWeight: FontWeight.w700,
+              child: Center(
+                child: Text(
+                  'Al Quran',
+                  style: GoogleFonts.sourceCodePro(
+                    color: AppColors.colorWhiteHighEmp,
+                    textStyle: Theme.of(context).textTheme.displayLarge,
+                    fontSize: 20.sp,
+                    //fontWeight: FontWeight.w700,
+                  ),
                 ),
               ),
             ),

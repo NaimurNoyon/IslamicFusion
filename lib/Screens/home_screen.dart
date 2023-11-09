@@ -52,7 +52,6 @@ class HomeScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             /*AnalogClock(
-
               //secondHandColor: Colors.transparent,
               hourHandLengthFactor: 0.9,
               dateTime: DateTime.now(),

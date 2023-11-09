@@ -47,6 +47,8 @@ dependencies:
   flutter_qiblah: ^2.2.0
   geolocator:
   adhan:
+  animated_text_kit:
+  http:
 
 
 flutter_native_splash:
